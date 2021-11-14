@@ -38,6 +38,7 @@ public class PlaceValidationSteps extends Utils{
 		res = given().spec(requestSpecification())
 				.body(data.addPlacePayload(name,address,language));
 		System.out.println("add_place_payload");
+		System.out.println("add_place_payload");
 	    
 	}
 	
@@ -62,6 +63,7 @@ public class PlaceValidationSteps extends Utils{
 	@Then("API call is success with status code {int}")
 	public void api_call_is_success_with_status_code(int statusCode) {
 		assertEquals(response.getStatusCode(),statusCode);
+		System.out.println("api_call_is_success_with_status_code");
 		System.out.println("api_call_is_success_with_status_code");
 				
 	    
