@@ -37,6 +37,7 @@ public class PlaceValidationSteps extends Utils{
 	public void add_place_payload_with(String name, String address, String language) throws IOException {	
 		res = given().spec(requestSpecification())
 				.body(data.addPlacePayload(name,address,language));
+		System.out.println("add_place_payload");
 	    
 	}
 	
@@ -55,12 +56,13 @@ public class PlaceValidationSteps extends Utils{
 	else if(method.equalsIgnoreCase("GET")) 
 		response = res.when().get(resourceAPI.getResource());
 	
-	    
+	System.out.println("user_calls_using_request");    
 	}
 	 
 	@Then("API call is success with status code {int}")
 	public void api_call_is_success_with_status_code(int statusCode) {
 		assertEquals(response.getStatusCode(),statusCode);
+		System.out.println("api_call_is_success_with_status_code");
 				
 	    
 	}
@@ -68,6 +70,7 @@ public class PlaceValidationSteps extends Utils{
 	public void in_response_body_is(String keyValue, String expectedValue) {
 	
 	 assertEquals(getJsonPath(response,keyValue),expectedValue);
+	 System.out.println("in_response_body_is");
 	}
 	
 	@Then("verify place_id created maps to {string} using {string}")
@@ -78,12 +81,14 @@ public class PlaceValidationSteps extends Utils{
 		 user_calls_using_request(resource,"GET");
 		 String actualName = getJsonPath(response,"name");
 		 assertEquals(expectedName,actualName);
+		 System.out.println("verify_place_id_created_maps_to_using");
 	
 	}
 	
 	@Given("deletePlace payload")
 	public void delete_place_payload() throws IOException {
 	   res = given().spec(requestSpecification()).body(data.deletePlacePayload(place_id));
+	   System.out.println("deletePlace payload");
 	}
 
 
